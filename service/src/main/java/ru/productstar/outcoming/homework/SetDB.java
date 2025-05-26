@@ -1,31 +1,19 @@
-package ru.productstar.outcoming;
-
-import java.sql.Connection;
-import javax.sql.DataSource;
+package ru.productstar.outcoming.homework;
 
 import org.h2.jdbcx.JdbcDataSource;
+import org.springframework.context.annotation.Bean;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.sql.Statement;
-import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        // run H2
-        Main mainClass = new Main();
-        mainClass.setUp();
-//        Thread.currentThread().join(); // keep the main running
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Для останова БД H2 in-memory нажмите '0' + ENTER");
-        String data = null;
-        while (data == null || !data.equals("0")) {
-            data = scanner.nextLine();
-        }
+public class SetDB {
+    public SetDB() {
+        setUp();
     }
-
     public void setUp() {
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setURL("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
@@ -50,5 +38,4 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
-
 }
