@@ -43,3 +43,4 @@ Real_HzClientTest
 Проект "HomeWorkMocking" был перекопирован изначально из предложенного проекта dz .
 В /service в pom.xml были добавлены plugin'ы maven-surefire-plugin и maven-jar-plugin потому как без них не работало .
 В /service в pom.xml были добавлены зависимости 
+В /h2 в pom.xml были добавлены зависимости spring-boot-starter-data-jpa для старта БД в spring

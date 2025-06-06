@@ -27,10 +27,10 @@ public class ContactConfiguration {
         return new ContactDao(namedParameterJdbcTemplate);
     }
 
-    @Bean
-    public SetDB setDB() {
-        return new SetDB();
-    }
+//    @Bean
+//    public SetDB setDB() {
+//        return new SetDB();
+//    }
 
 
 }

@@ -9,7 +9,7 @@ CREATE TABLE CONTACT (
 );
 
 INSERT INTO CONTACT(ID, NAME, SURNAME, EMAIL, PHONE_NUMBER)
-VALUES (1000, 'Ivan', 'Ivanov', 'iivanov@gmail.com', '1234567');
+VALUES (1000, 'Ivan', 'Ivanov', 'iivanov@gmail.com', '01234567');
 
 INSERT INTO CONTACT(ID, NAME, SURNAME, EMAIL, PHONE_NUMBER)
 VALUES (2000, 'Maria', 'Ivanova', 'mivanova@gmail.com', '7654321');
