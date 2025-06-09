@@ -7,31 +7,26 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.test.context.ActiveProfiles;
 import ru.productstar.outcoming.homework.Contact;
 import ru.productstar.outcoming.homework.ContactDao;
 
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//import static com.sun.org.apache.xml.internal.security.Init.getResource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
+@ActiveProfiles("testBasic")
 public class InMemory_HzClientTest {
-
-    private Contact testContact = new Contact(1000l, "Ivan", "Ivanov", "iivanov@gmail.com", "123456789");
-    public NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
+    private Contact testContact = new Contact(1000l, "Ivan", "Ivanov", "iivanov@gmail.com", "0002");
     @BeforeAll
-    private static void SetDB() throws SQLException {
+    private static void setDB() throws SQLException {
         setUp();
     }
     public static void setUp() throws SQLException {
@@ -42,7 +37,7 @@ public class InMemory_HzClientTest {
         initializeDb(dataSource);
         Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9090").start();
     }
-    private static void initializeDb(DataSource dataSource) {
+    private static void initializeDb(@Autowired DataSource dataSource) {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         try (InputStream inputStream = classloader.getResourceAsStream("contact.sql")) {
             String sql = new String(inputStream.readAllBytes());
@@ -56,7 +51,6 @@ public class InMemory_HzClientTest {
             throw new RuntimeException(e);
         }
     }
-
     @Autowired
     private ContactDao contactDao;
     @Test

@@ -1,4 +1,4 @@
--- DROP TABLE IF EXISTS CONTACT;
+DROP TABLE IF EXISTS CONTACT;
 
 CREATE TABLE CONTACT (
     ID serial primary key ,
@@ -9,7 +9,7 @@ CREATE TABLE CONTACT (
 );
 
 INSERT INTO CONTACT(ID, NAME, SURNAME, EMAIL, PHONE_NUMBER)
-VALUES (1000, 'Ivan', 'Ivanov', 'iivanov@gmail.com', '123456789');
+VALUES (1000, 'Ivan', 'Ivanov', 'iivanov@gmail.com', '0002');
 
 INSERT INTO CONTACT(ID, NAME, SURNAME, EMAIL, PHONE_NUMBER)
 VALUES (2000, 'Maria', 'Ivanova', 'mivanova@gmail.com', '7654321');
