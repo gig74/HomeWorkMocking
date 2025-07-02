@@ -37,7 +37,7 @@ public class InMemory_HzClientTest {
         initializeDb(dataSource);
         Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9090").start();
     }
-    private static void initializeDb(@Autowired DataSource dataSource) {
+    private static void initializeDb(DataSource dataSource) {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         try (InputStream inputStream = classloader.getResourceAsStream("contact.sql")) {
             String sql = new String(inputStream.readAllBytes());
